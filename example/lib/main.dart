@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:multi_browser_launcher/multi_browser_launcher.dart';
 
@@ -57,20 +55,6 @@ class MultiBrowserLauncherDemoScreen extends StatelessWidget {
                 },
                 child: const Text('launch firefox'),
               ),
-              if (Platform.isIOS)
-                // safari
-                ...[
-                const SizedBox(height: 20),
-                TextButton(
-                  onPressed: () {
-                    launchBrowser(
-                      browserType: BrowserType.safari,
-                      url: 'https://flutter.dev',
-                    );
-                  },
-                  child: const Text('launch safari'),
-                ),
-              ],
               const SizedBox(height: 20),
               // opera
               TextButton(

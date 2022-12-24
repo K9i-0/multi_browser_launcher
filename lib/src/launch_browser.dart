@@ -6,7 +6,6 @@ import 'package:url_launcher/url_launcher.dart';
 enum BrowserType {
   chrome,
   firefox,
-  safari,
   opera,
 }
 
@@ -42,8 +41,6 @@ Future<void> _launchBrowserAndroid(
         package: 'org.mozilla.firefox',
       );
       return await intent.launch();
-    case BrowserType.safari:
-      throw UnsupportedError('safari is not supported on Android');
     case BrowserType.opera:
       final intent = AndroidIntent(
         action: 'action_view',
@@ -67,10 +64,6 @@ Future<void> _launchBrowserIOS(
       break;
     case BrowserType.firefox:
       formattedUrl = 'firefox://open-url?url=$url';
-      break;
-    case BrowserType.safari:
-      // TODO(K9i-0): implement for safari
-      formattedUrl = url;
       break;
     case BrowserType.opera:
       formattedUrl = url
