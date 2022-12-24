@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:android_intent_plus/android_intent.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 enum BrowserType {
   chrome,
@@ -69,14 +69,17 @@ Future<void> _launchBrowserIOS(
       formattedUrl = 'firefox://open-url?url=$url';
       break;
     case BrowserType.safari:
-      formattedUrl = 'safari://$url';
+      // TODO(K9i-0): implement for safari
+      formattedUrl = url;
       break;
     case BrowserType.opera:
-      formattedUrl = 'opera://$url';
+      formattedUrl = url
+          .replaceFirst('https://', 'touch-https://')
+          .replaceFirst('http://', 'touch-http://');
       break;
   }
-  launchUrlString(
-    formattedUrl,
+  launchUrl(
+    Uri.parse(formattedUrl),
     mode: LaunchMode.externalApplication,
   );
 }
