@@ -1,4 +1,4 @@
-Launch web browsers.
+Launch web browsers from your Flutter app.
 
 ## Features
 
